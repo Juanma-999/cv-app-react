@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./styles/GeneralInfo.css";
 
 export default function GeneralInfo() {
     const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
@@ -40,17 +41,17 @@ export default function GeneralInfo() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} required />
+        <form className="general-info-form" onSubmit={handleSubmit}>
+            <label htmlFor="name" className="form-label">Name:</label>
+            <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="form-input" required/>
             <br />
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+            <label htmlFor="email" className="form-label">Email:</label>
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="form-input" required/>
             <br />
-            <label htmlFor="phone">Phone number:</label>
-            <input id="phone" name="phone" value={formData.phone} onChange={handleChange} required />
+            <label htmlFor="phone" className="form-label">Phone number:</label>
+            <input id="phone" name="phone" value={formData.phone} onChange={handleChange} className="form-input" required/>
             <br />
-            <button type="submit">Submit</button>
+            <button type="submit" className="submit-button">Submit</button>
         </form>
     );
 }
