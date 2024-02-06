@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./styles/GeneralStyles.css";
 
-export default function GeneralInfo() {
+export default function GeneralInfo({ onSubmit }) {
     const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
 
     const handleChange = (event) => {
@@ -34,14 +34,14 @@ export default function GeneralInfo() {
         const form = event.target;
 
         if (form.checkValidity()) {
-            alert(`Name: ${formData.name}, Email: ${formData.email}, Phone number: ${formData.phone}`);
+            onSubmit(formData); // Pass form data to the parent component
         } else {
             form.reportValidity();
         }
     };
 
     return (
-        <div className="general-info-container">
+        <div>
             <form className="general-info-form" onSubmit={handleSubmit}>
                 <label htmlFor="name" className="form-label">Name:</label>
                 <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="form-input" required/>
